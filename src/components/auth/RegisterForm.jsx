@@ -33,7 +33,7 @@ export default function RegisterForm({ onSwitchToLogin }) {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -103,7 +103,7 @@ export default function RegisterForm({ onSwitchToLogin }) {
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -121,7 +121,8 @@ export default function RegisterForm({ onSwitchToLogin }) {
         formData.role,
         formData.role === 'player' ? formData.sport : null
       );
-      // Navigation will be handled by the parent component based on auth state
+      // Reload page to show login form after successful registration
+      window.location.reload();
     } catch (error) {
       setErrors({ submit: error.message });
     } finally {
