@@ -106,6 +106,68 @@ function CoachDashboard({ onNavigateToTab }) {
     return 'Needs Improvement';
   };
 
+  /**
+   * Export team and player data as CSV
+   */
+  const handleExportReport = () => {
+    // Create CSV header
+    const headers = ['Player Name', 'Email', 'Sport', 'Current Score (%)', 'Performance Status', 'Total Matches', 'Average Score'];
+
+    // Create CSV rows from player data
+    const rows = players.map(player => [
+      player.name || '',
+      player.email || '',
+      player.sport || '',
+      player.currentScore || 0,
+      getPerformanceStatus(player.currentScore || 0),
+      player.matchCount || 0,
+      player.averageScore || 0
+    ]);
+
+    // Add team summary at the top
+    const summaryRows = [
+      ['Team Performance Report'],
+      ['Coach Name', userData?.name || ''],
+      ['Report Date', new Date().toLocaleDateString()],
+      [''],
+      ['Team Statistics'],
+      ['Total Players', teamStats.totalPlayers],
+      ['Team Average Score', `${teamStats.averageScore}%`],
+      ['Total Matches', teamStats.totalMatches],
+      ['Top Performer', teamStats.topPerformer?.name || 'N/A'],
+      [''],
+      ['Player Details']
+    ];
+
+    // Combine all rows
+    const allRows = [...summaryRows, headers, ...rows];
+
+    // Convert to CSV string
+    const csvContent = allRows.map(row =>
+      row.map(cell => {
+        // Escape quotes and wrap in quotes if contains comma or quote
+        const cellStr = String(cell);
+        if (cellStr.includes(',') || cellStr.includes('"') || cellStr.includes('\n')) {
+          return `"${cellStr.replace(/"/g, '""')}"`;
+        }
+        return cellStr;
+      }).join(',')
+    ).join('\n');
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    link.setAttribute('href', url);
+    link.setAttribute('download', `team-report-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
@@ -147,13 +209,19 @@ function CoachDashboard({ onNavigateToTab }) {
                 </p>
               </div>
               <div className="hidden md:flex space-x-3">
-                <button className="flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-gray-50 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200">
+                <button
+                  onClick={handleExportReport}
+                  className="flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-gray-50 border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Export Report
                 </button>
-                <button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                <button
+                  onClick={() => onNavigateToTab && onNavigateToTab('match-entry')}
+                  className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
