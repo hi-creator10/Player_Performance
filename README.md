@@ -45,13 +45,41 @@ src/
 └── config/             # Configuration files
 ```
 
-## Technologies Used
+## Technology Stack
 
-- React 19 with Vite
-- Firebase (Authentication & Firestore)
-- React Router DOM
-- Tailwind CSS
-- ESLint for code quality
+### Frontend
+- **Framework:** React 19
+- **Build Tool:** Vite (for fast development and optimized production builds)
+- **Routing:** React Router DOM v6
+- **Styling:**
+  - Tailwind CSS for utility-first styling
+  - Custom theme configuration
+- **State Management:**
+  - React Context API for global state
+  - Custom hooks for reusable logic
+- **Development Tools:**
+  - ESLint for code quality
+  - Vitest for unit testing
+  - React Testing Library for component testing
+
+### Backend (Firebase)
+- **Authentication:**
+  - Firebase Authentication
+  - Email/Password sign-in
+  - Role-based access control
+- **Database:**
+  - Cloud Firestore (NoSQL)
+  - Real-time data synchronization
+  - Offline data persistence
+- **Security:**
+  - Firebase Security Rules
+  - Environment-based configuration
+
+### Additional Features
+- Offline support with data synchronization
+- Real-time updates for live match data
+- Performance monitoring and analytics
+- Cross-platform compatibility
 
 ## Firebase Setup Requirements
 
