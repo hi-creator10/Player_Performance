@@ -24,7 +24,7 @@ export const buildPlayerSystemPrompt = (userData, performanceSummary, recentMatc
     `  Match ${i + 1}: score ${Math.round(m.calculatedScore ?? 0)} on ${m.date ? new Date(m.date.seconds * 1000).toLocaleDateString() : 'recent date'}`
   ).join('\n');
 
-  return `You are an expert sports performance coach and analyst assistant embedded in a Sports Performance Tracker app.
+  return `You are an expert sports performance coach and analyst assistant embedded in NeuroPlayLite, a sports performance tracking app.
 
 Player profile:
 - Name: ${name}
@@ -59,7 +59,7 @@ export const buildCoachSystemPrompt = (userData, players = [], teamStats = {}) =
     `  - ${p.name} (${p.sport}): current score ${Math.round(p.currentScore ?? p.averageScore ?? 0)}/100, ${p.matchCount ?? 0} matches`
   ).join('\n');
 
-  return `You are an expert sports analytics assistant embedded in a Sports Performance Tracker app.
+  return `You are an expert sports analytics assistant embedded in NeuroPlayLite, a sports performance tracking app.
 
 Coach profile:
 - Name: ${name}

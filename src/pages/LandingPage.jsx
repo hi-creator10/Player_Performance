@@ -201,7 +201,7 @@ const LandingPage = () => {
                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
               </svg>
             </span>
-            <span className="font-bold text-lg tracking-tight">Sports Performance Tracker</span>
+            <span className="font-bold text-lg tracking-tight">NeuroPlay<span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">Lite</span></span>
           </Link>
           <div className="hidden md:flex items-center gap-8 text-sm text-slate-300">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -349,7 +349,7 @@ const LandingPage = () => {
               <div className="lg:col-span-2">
                 <div className="rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur p-8 text-center">
                   <div className="flex items-center justify-center gap-4 text-2xl font-extrabold tracking-tight">
-                    <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">SPT</span>
+                    <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">NeuroPlayLite</span>
                     <span className="text-slate-500 text-xl">×</span>
                     <span className="text-white">Sportsathon</span>
                   </div>
@@ -472,7 +472,7 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Sports Performance Tracker. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} NeuroPlayLite. All rights reserved.</p>
           <p>In collaboration with <span className="text-slate-300 font-medium">Sportsathon</span></p>
         </div>
       </footer>

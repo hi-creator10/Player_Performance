@@ -1,4 +1,4 @@
-# Sports Performance Tracker
+# NeuroPlayLite
 
 A React-based web application for tracking sports performance across cricket, football, and basketball. Features role-based access for coaches and players with Firebase integration.
 

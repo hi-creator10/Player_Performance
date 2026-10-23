@@ -42,8 +42,8 @@ const HomePage = () => {
                 </div>
                 
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Sports Performance
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Tracker</span>
+                  NeuroPlay
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Lite</span>
                 </h1>
                 
                 <p className="text-xl text-gray-600 max-w-2xl">

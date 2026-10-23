@@ -47,8 +47,7 @@ const Navigation = () => {
                 </svg>
               </div>
               <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                <span className="hidden sm:inline">Sports Performance Tracker</span>
-                <span className="sm:hidden">SPT</span>
+                NeuroPlayLite
               </h1>
             </div>
             
