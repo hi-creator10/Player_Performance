@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { LoginForm, RegisterForm } from '../components/auth/index.js';
 import { Card } from '../components/ui/index.js';
 
@@ -7,7 +8,8 @@ import { Card } from '../components/ui/index.js';
  * Requirements: 1.1, 1.4, 1.5 - User authentication and role-based access
  */
 const HomePage = () => {
-  const [showRegister, setShowRegister] = useState(false);
+  const [searchParams] = useSearchParams();
+  const [showRegister, setShowRegister] = useState(searchParams.get('mode') === 'register');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
@@ -17,6 +19,13 @@ const HomePage = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
         <div className="absolute top-40 left-40 w-60 h-60 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
       </div>
+
+      <Link
+        to="/"
+        className="absolute top-6 left-6 z-10 inline-flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+      >
+        <span aria-hidden="true">←</span> Back to home
+      </Link>
 
       <div className="relative flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl w-full">

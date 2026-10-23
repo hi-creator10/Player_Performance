@@ -6,7 +6,7 @@ import { OfflineProvider } from './contexts/OfflineContext.jsx';
 import { ErrorBoundary, RouteWrapper, NotFound } from './components';
 import OfflineIndicator from './components/shared/OfflineIndicator.jsx';
 import { ProtectedRoute } from './components/auth/index.js';
-import { HomePage, CoachPage, PlayerPage } from './pages/index.js';
+import { HomePage, LandingPage, CoachPage, PlayerPage } from './pages/index.js';
 
 /**
  * Main App component with routing configuration
@@ -22,9 +22,12 @@ function App() {
               <OfflineIndicator />
               <RouteWrapper>
                 <Routes>
-                  {/* Public route - Home/Auth page */}
+                  {/* Public landing page */}
+                  <Route path="/" element={<LandingPage />} />
+
+                  {/* Public route - Auth page */}
                   <Route 
-                    path="/" 
+                    path="/login" 
                     element={
                       <ProtectedRoute requireAuth={false}>
                         <HomePage />

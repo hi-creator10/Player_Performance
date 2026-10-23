@@ -15,9 +15,9 @@ const ProtectedRoute = ({ children, requiredRole = null, requireAuth = true }) =
     return <RouteLoader message="Checking authentication..." />;
   }
 
-  // Redirect to home if authentication is required but user is not authenticated
+  // Redirect to login if authentication is required but user is not authenticated
   if (requireAuth && !isAuthenticated) {
-    return <Navigate to="/" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   // Redirect authenticated users away from auth pages
@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children, requiredRole = null, requireAuth = true }) =
     const from = location.state?.from?.pathname;
     let redirectPath;
     
-    if (from && from !== '/') {
+    if (from && from !== '/' && from !== '/login') {
       // Validate the intended destination based on user role
       if (userRole === 'coach' && from === '/coach') {
         redirectPath = '/coach';
